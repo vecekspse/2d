@@ -1,148 +1,44 @@
-
 <!DOCTYPE html>
 <html lang="cs">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Javascript 07 - Události myši</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-  <style>
-    .fake-canvas { position: relative; height: 400px; }
-    .fake-canvas .avatar { position: absolute; left: 0; top: 0; }
-    .selected { border: 5px solid green; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotogalerie</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <div class="container pt-3">
-    <section class="mb-3">
-      <h1 class="mb-3">Javascript 07 - Události myši - cvičení</h1>
-      <p class="alert alert-primary">
-        Vítejte ve cvičení k Document Object Modelu, v tomto cvičení v konzoli nic nenajdete...
-        Všechno potřebné bude v HTML.<br>POZOR! - HTML však nemůžete nijak měnit, všechny úkoly musí být splněny
-        pomocí Javascriptu.
-      </p>
-    </section>
-    <section class="mb-3">
-      <h2>Máte rádi...?</h2>
-      <p>
-        Jednoduchá soutěž v popularitě, máte si vybrat, jestli máte nebo nemáte rádi věc na obrázku.
-        Pokud stisknete tlačítko vlevo, přičtěte ke skóre pod obrázkem +1, pokud stisknete tlačítko vpravo 
-        odečtěte od skóre -1. V tuto chvíli není žádný limit na mačkání tlačítek!
-      </p>
-      <div class="popularita p-5">
-        <h2 class="display-4 mb-3 text-center">Máte rádi Brokolici?</h2>
-
-        <div class="row justify-content-center mb-3">
-          <div class="col-md-2 d-flex justify-content-center">
-            <button class="likeBtn btn btn-success btn-lg" id="like">Miluju Brokolici!!! (+1)</button>
-          </div>
-          <div class="col-md-4">
-            <img src="https://images.unsplash.com/photo-1518164147695-36c13dd568f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" alt="Brokolice" class="img-fluid">
-          </div>
-          <div class="col-md-2 d-flex justify-content-center">
-            <button class="dislikeBtn btn btn-danger btn-lg" id="dislike">Nenávidím Brokolici!!! (-1)</button>
-          </div>
+    <div class="container">
+        <div class="info">
+            <h1>Interaktivní galerie</h1>
+            <p>
+                Napište skript, který obsluhuje galerii níže. 
+                Galerie obsahuje hlavní obrázek, který lze měnit
+                podle obrázků v náhledech. Změna může proběhnout dvěma způsoby
+                tlačítka Předchozí a Následující posouvají obrázky popořadě (včetně zřetězení).
+                Tlačítko Spustit prezentaci spouští prezentaci obrázku s 3 vteřinovým intervalem.
+                Při kliknutí na libovolný náhledový obrázek dojde k výměně obrázku nahoře 
+                (včetně pořadí přehrávání).
+            </p>
         </div>
-        <p class="text-center h3">SKÓRE: <span class="skore">0</span></p>
-      </div>
-
-    </section>
-    <section class="mb-3">
-      <h2>Co bych si vzal sebou na pustý ostrov?</h2>
-      <p>
-       Napište skript, po kterém budete mít možnost označit obrázky kliknutím myši. Označení bude provedeno například pomocí 
-       barevného rámečku kolem obrázku. Pozor, obrázek můžete i odoznačit (zrušit mu rámeček).
-      </p>        
-      <h3>Předměty na výběr</h3>
-      <p class="pocitadlo"></p>
-      <div class="row predmety">
-        <div class="col-md-2">
-          <img class="obrazek1 img-fluid" src="https://images.unsplash.com/photo-1586527484765-979a20639316?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Obrázek 1">
+        <div class="gallery">
+            <div class="main-image">
+                <img src="images/image1.jpg" alt="Obrázek 1">
+            </div>
+            <div class="controls">
+                <button class="prev">Předchozí obrázek</button>
+                <button class="slideshow">Spustit prezentaci</button>
+                <button class="next">Následující obrázek</button>
+            </div>
+            <div class="thumbnails">
+                <img src="images/image1.jpg" alt="Obrázek 1" class="active">
+                <img src="images/image2.jpg" alt="Obrázek 2">
+                <img src="images/image3.jpg" alt="Obrázek 3">
+                <img src="images/image4.jpg" alt="Obrázek 4">
+                <img src="images/image5.jpg" alt="Obrázek 5">
+                <img src="images/image6.jpg" alt="Obrázek 6">
+            </div>
         </div>
-        <div class="col-md-2">
-          <img class="obrazek2 img-fluid" src="https://images.unsplash.com/photo-1586339392738-65847e399f7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Obrázek 2">
-        </div>
-        <div class="col-md-2">
-          <img class="obrazek3 img-fluid" src="https://images.unsplash.com/photo-1586685983389-612a65517b38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Obrázek 3">
-        </div>
-        <div class="col-md-2">
-          <img class="obrazek4 img-fluid" src="https://images.unsplash.com/photo-1586769852836-bc069f19e1b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Obrázek 4">
-        </div>
-        <div class="col-md-2">
-          <img class="obrazek5 img-fluid" src="https://images.unsplash.com/photo-1586941961327-cb0e30afbf01?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Obrázek 5">
-        </div>
-        <div class="col-md-2">
-          <img class="obrazek6 img-fluid" src="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" alt="Obrázek 6">
-        </div>
-      </div>
-    </section>
-
-    <section class="mb-3">
-      <h2>Pohyblivý obrázek</h2>
-      <p>
-        Máme před sebou trochu složitější operaci, nicméně s pár typy to zajisté zvládnete!
-        Uvnitř obdelníku je avatar, co kdybychom ho trochu rozpohybovali..?<br>
-        Avatar má nastavenou absolutní pozici uvnitř relativního obdelníku, výchozí pozice je 0, 0 vlevo, nahoře.
-        Když klikneme do obdelníku, tak MouseEvent zaznamená lokaci kliknutí do vlastností layerX a layerY,
-        zachyťte tedy kliknutí do obdelníku a posuňte avatar na novou pozici podle kliknutí.
-      </p>
-      <p class="font-italic">
-        Bude se vám hodit layerX, layerY, když měníme pozici nesmíme zapomenout na konec přidat px.
-      </p>
-      <h3>Plátno</h3>
-      <div class="fake-canvas table-bordered">
-          <img class="avatar" src="https://api.adorable.io/avatars/64/lorenzoLamas.png" alt="Avatar">
-      </div>
-
-    </section>
- 
-    <section class="mb-3">
-      <h2>TODO List!</h2>
-      <p>
-        Pojďme si zopakovat pár základních věcí včetně nových údálostí. Máte před sebou 
-        jednoduchý seznam úkolníček. Do úkolníčku standardně jdou přidávávat úkoly, označovat hotové úkoly a odebírat úkoly.
-        To vše do toho implementujte.
-      </p>
-      <p>
-        <strong>Přidat úkol</strong> pro přidání úkolu použijte formulář níže, při kliknutí na tlačítko, 
-        se obsah vstupního pole (element.value), přidá na konec seznamu jako nová položka.
-      </p>
-      <p>
-        <strong>Označení hotového úkolu</strong> při kliknutí na úkol se změní barva pozadí na zelenou (např. třída bg-success).
-        Pozor - když můžeme označení i zrušit!
-      </p>
-      <p>
-        <strong>Odstranění úkolu ze seznamu</strong> pokud na úkol klikneme tzv. dvojklikem (dblclick), úkol se ze seznamu odstraní úplně. 
-        <em>Bonus: Zkuste použít confirm box pro potvrzení smazání!</em>
-      </p>
-      <h3>Můj osobní TODO list</h3>
-      <div class="row">
-        <div class="col-md-6">
-          <ul class="list-group ukoly-seznam">
-            <li class="list-group-item">Vyplnit TODO list!</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3 class="h6 mt-5">Přidat novou položku do TODO listu</h3>
-      <div class="form-row">
-        <div class="col-md-6">
-          <input type="text" class="form-control ukolInput" name="ukolInput" placeholder="Titulek úkolu">
-        </div>
-        <div class="col-md-3">
-          <button type="button" class="ukolBtn btn btn-primary">Přidat do seznamu úkolů</button>
-
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <script src="main.js"></script>
+    </div>
+    <script src="main.js"></script>
 </body>
-
 </html>
